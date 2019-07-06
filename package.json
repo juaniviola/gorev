@@ -1,0 +1,11 @@
+{
+  "name": "gorev",
+  "version": "0.0.1",
+  "description": "manage tasks",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "https://instagram.com/juaniviola",
+  "license": "MIT"
+}
