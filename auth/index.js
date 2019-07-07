@@ -57,5 +57,5 @@ router.post('/', auth, async (req, res) => {
 })
 
 module.exports = {
-  routerApi
+  routerApi: router
 }

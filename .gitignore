@@ -92,6 +92,8 @@ typings/
 .dynamodb/
 
 # env variables
-auth/.env
+.env
+
+data/
 
 # End of https://www.gitignore.io/api/node
