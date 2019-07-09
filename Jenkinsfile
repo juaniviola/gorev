@@ -19,7 +19,13 @@ pipeline {
 
 		stage ("run image") {
 			steps {
-				sh "docker run ${dockerImage.id} node test"
+				sh "docker run ${dockerImage.id}"
+			}
+		}
+
+		stage ("run test") {
+			steps {
+				sh "npm test"
 			}
 		}
 
