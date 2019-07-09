@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	tools {
-		nodejs 'nodejs-10.16.0'
+		nodejs 'node-10.16.0'
 	}
 
 	options {
