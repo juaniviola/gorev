@@ -19,7 +19,7 @@ pipeline {
 
     stage ("run image") {
       steps {
-        sh "docker-compose run ."
+        sh "docker-compose run app mongo"
       }
     }
 
