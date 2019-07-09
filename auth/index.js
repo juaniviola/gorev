@@ -5,6 +5,10 @@ const { User, validateUser } = require('../model/user.model')
 const { hashSync, compareSync, genSaltSync } = require('bcryptjs')
 const express = require('express')
 const router = express.Router()
+require('dotenv').config()
+const config = {
+  dev: process.env.DEV
+}
 
 router.post('/signin', async (req, res) => {
   const validate = validateUser(req.body)
@@ -55,6 +59,12 @@ router.post('/', auth, async (req, res) => {
     username: user.username
   })
 })
+
+if (config.dev) {
+  router.get('/test', (req, res) => {
+    res.send('test passed')
+  })
+}
 
 module.exports = {
   routerApi: router
