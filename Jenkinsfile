@@ -5,7 +5,7 @@ pipeline {
 	}
 
 	options {
-		timeout(time: 2, unit: 'MINUTES')
+		timeout(time: 4, unit: 'MINUTES')
 	}
 
 	stages {
@@ -19,7 +19,7 @@ pipeline {
 
 		stage ("run image") {
 			steps {
-				sh "docker run ${dockerImage.id} node test.js"
+				sh "docker run ${dockerImage.id} node test"
 			}
 		}
 
