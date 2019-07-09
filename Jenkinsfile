@@ -11,8 +11,8 @@ pipeline {
   stages {
     stage ("build") {
       steps {
-        script {
-          dockerImage = docker.build "juaniviola/gorev:latest"
+        steps {
+        	sh "docker-compose build"
         }
       }
     }
@@ -37,7 +37,7 @@ pipeline {
 
     stage ("delete image") {
       steps {
-        sh "docker image rm --force ${dockerImage.id}"
+        sh "docker image rm --force gorev_app"
       }
     }
   }
