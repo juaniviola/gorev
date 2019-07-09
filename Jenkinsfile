@@ -19,13 +19,19 @@ pipeline {
 
     stage ("run image") {
       steps {
-        sh "docker run ${dockerImage.id} --env-file /usr/src/app/.env"
+        sh "docker-compose run ."
       }
     }
 
     stage ("run test") {
       steps {
         sh "npm test"
+      }
+    }
+
+		stage ("stop image") {
+      steps {
+        sh "docker-compose down"
       }
     }
 
