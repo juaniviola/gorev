@@ -12,7 +12,7 @@ pipeline {
     stage ("build") {
       steps {
         script {
-        	dockerImage = docker.build "juaniviola/gorev:latest"
+          dockerImage = docker.build "juaniviola/gorev:latest"
         }
       }
     }
@@ -26,20 +26,13 @@ pipeline {
     }
 
     stage ("run test") {
-      steps {
-        sh "docker exec -it ${dockerImage.id} sh -c \\\"npm test\\\""
-      }
-    }
-
-		stage ("stop image") {
-      steps {
-        sh "docker-compose down"
-      }
+    	steps {
+    		sh "docker exec -it ${dockerImage.id} sh -c \\\"cd /usr/src/app && npm test\\\""
+    	}
     }
 
     stage ("delete image") {
       steps {
-        sh "docker kill mongo"
         sh "docker image rm --force ${dockerImage.id}"
         sh "docker network rm red"
       }
