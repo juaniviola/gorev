@@ -3,15 +3,18 @@ services:
   app:
     container_name: gorev
     build: .
-    ports: 
+    ports:
       - "8000:8000"
+    command: npm run start-dev
+    volumes:
+      - .:/usr/src/app
     links:
       - mongo
     env_file:
       - dev.env
   
   mongo:
-    container_name: mongo
+    container_name: mongodb
     image: mongo
     volumes:
       - ./data:/data/db

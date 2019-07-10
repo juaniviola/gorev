@@ -4,8 +4,9 @@
   "description": "manage tasks",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "test": "npm start && jest"
+  	"start": "node .",
+    "start-dev": "nodemon .",
+    "test": "jest"
   },
   "author": "https://instagram.com/juaniviola",
   "license": "MIT",
@@ -17,7 +18,9 @@
     "mongoose": "^5.6.3"
   },
   "devDependencies": {
+    "chalk": "^2.4.2",
     "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   }

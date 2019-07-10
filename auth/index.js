@@ -62,10 +62,8 @@ router.post('/', auth, async (req, res) => {
 
 if (config.dev) {
   router.get('/test', (req, res) => {
-    res.send('test passed')
+    res.send('test passed.')
   })
 }
 
-module.exports = {
-  routerApi: router
-}
+module.exports = router

@@ -18,6 +18,6 @@ mongoose
   .catch(err => console.error(`[ERROR]: ${err}`))
 
 app.use(express.json())
-app.use('api/users', authUsers.routerApi)
+app.use('/api/users', authUsers)
 
 app.listen(config.port, () => console.log(`[App] listening on port ${config.port}`))
