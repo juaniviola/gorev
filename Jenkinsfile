@@ -25,12 +25,6 @@ pipeline {
       }
     }
 
-    stage ("run test") {
-    	steps {
-    		sh "docker exec -it ${dockerImage.id} sh -c \\\"cd /usr/src/app && npm test\\\""
-    	}
-    }
-
     stage ("delete image") {
       steps {
         sh "docker image rm --force ${dockerImage.id}"
