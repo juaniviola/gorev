@@ -1,7 +1,7 @@
 'use strict'
 
 const auth = require('./auth')
-const { User, validateUser } = require('../model/user.model')
+const { User, validateUser, generateAuthToken } = require('../model/user.model')
 const { hashSync, compareSync } = require('bcryptjs')
 const express = require('express')
 const router = express.Router()
@@ -31,7 +31,8 @@ router.post('/create', async (req, res) => {
   	isAdmin: user.isAdmin
   }
 
-  const token = user.generateAuthToken(params)
+  const token = generateAuthToken(params)
+  const update = await User.updateOne({ _id: user._id }, { $set: { token } })
   res.header('x-auth-token', token).send({
     _id: user._id,
     username: user.username
@@ -56,7 +57,8 @@ router.post('/login', async (req, res) => {
   	isAdmin: user.isAdmin
   }
 
-  const token = user.generateAuthToken(params)
+  const token = generateAuthToken(params)
+  const update = await User.updateOne({ _id: user._id }, { $set: { token } })
   res.header('x-auth-token', token).send({
     _id: user._id,
     username: user.username
@@ -69,23 +71,19 @@ router.post('/', auth, async (req, res) => {
   let user = await User.findById(req.user._id)
   if (!user) return res.status(400).send('User no exist')
 
+  if (user.token !== req.token) return res.status(400).send('invalid access')
   const params = {
   	_id: user._id,
   	username: user.username,
   	isAdmin: user.isAdmin
   }
 
-  const token = user.generateAuthToken(params)
+  const token = generateAuthToken(params)
+  const update = await User.updateOne({ _id: user._id }, { $set: { token } })
   res.header('x-auth-token', token).send({
     _id: user._id,
     username: user.username
   })
 })
-
-if (config.dev) {
-  router.get('/test', (req, res) => {
-    res.send('test passed.')
-  })
-}
 
 module.exports = router

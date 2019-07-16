@@ -18,6 +18,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8
   },
+  token: {
+  	type: String
+  },
   tasks: {
     type: Array,
     default: []
@@ -28,10 +31,9 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-UserSchema.methods.generateAuthToken = params => jwt.sign(params, config.privateKey)
-
 const User = mongoose.model('User', UserSchema)
-const cleanCollection = () => User.deleteMany({})
+
+const generateAuthToken = params => jwt.sign(params, config.privateKey)
 const validateUser = (user) => {
   if ((!user.username || user.username.length < 5) || (!user.password || user.password.length < 8)) return false
 
@@ -41,5 +43,5 @@ const validateUser = (user) => {
 module.exports = {
   User,
   validateUser,
-  cleanCollection
+  generateAuthToken
 }
