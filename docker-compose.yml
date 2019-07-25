@@ -1,17 +1,30 @@
 version: '3'
 services:
-  app:
-    container_name: gorev
+  authsv:
+    container_name: authsv
     build: .
     ports:
       - "8000:8000"
-    command: npm run start-dev
+    command: npm run start-dev-authsv
     volumes:
       - .:/usr/src/app
     links:
       - mongo
     env_file:
-      - dev.env
+      - ./auth-sv/dev.env
+
+  apisv:
+    container_name: apisv
+    build: .
+    ports:
+      - "8001:8001"
+    command: npm run start-dev-apisv
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mongo
+    env_file:
+      - ./api-sv/dev.env
   
   mongo:
     container_name: mongodb
