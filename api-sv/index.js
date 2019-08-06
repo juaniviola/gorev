@@ -4,8 +4,8 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
 
 
-const typeDefs = require('./typeSchema')
-const resolvers = require('./resolvers')
+const typeDefs = require('./schema/typeSchema')
+const resolvers = require('./schema/resolvers')
 
 const schema = makeExecutableSchema({
 	typeDefs,
@@ -16,4 +16,4 @@ app.use(express.json())
 app.use('/graphql', graphqlExpress({ schema }))
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
-app.listen(8001, () => console.log('running'))
+app.listen(8001, '0.0.0.0', () => console.log('running'))

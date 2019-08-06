@@ -21,10 +21,6 @@ const UserSchema = new mongoose.Schema({
   token: {
   	type: String
   },
-  tasks: {
-    type: Array,
-    default: []
-  },
   isAdmin: {
     type: Boolean,
     default: false

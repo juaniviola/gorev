@@ -20,4 +20,4 @@ mongoose
 app.use(express.json())
 app.use('/api/users', authUsers)
 
-app.listen(config.port, () => console.log(`[App] listening on port ${config.port}`))
+app.listen(config.port, '0.0.0.0', () => console.log(`[App] listening on port ${config.port}`))
