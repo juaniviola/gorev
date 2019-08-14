@@ -5,11 +5,15 @@ const typeDefs = `
 		token: String
 	}
 
+  scalar Creator
+  scalar Time
+
 	type Task {
-		_id: String,
-		userId: String,
-		title: String,
-		createdAt: String
+		id: String,
+		creator: user,
+		summary: Creator,
+		start: Time,
+    end: Time
 	}
 
 	input userCreate {
@@ -30,7 +34,7 @@ const typeDefs = `
 	type Query {
 		verifyUser(user: userVerify): User,
 		loginUser(user: userLogin): User,
-		getTasks(user: userVerify): Task
+		getTasks(user: userVerify): [Task]
 	}
 
 	type Mutation {
