@@ -25,6 +25,7 @@
     "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.4",
+    "googleapis": "^39.2.0"
   }
 }

@@ -96,4 +96,7 @@ typings/
 
 data/
 
+api-sv/utils/credentials.json
+api-sv/utils/token.json
+
 # End of https://www.gitignore.io/api/node

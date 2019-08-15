@@ -1,5 +1,6 @@
 require('dotenv').config()
 const rp = require('request-promise')
+const { listEvents } = require('../utils/')
 const config = {
 	authSv: process.env.AUTH_SERVER
 }
@@ -51,7 +52,8 @@ const resolvers = {
 				resolveWithFullResponse: true
 			})
 
-			const data = await getTask() // getTask es la funcion que retorna tareas
+			const data = await listEvents()
+      return data
 		}
 	},
 

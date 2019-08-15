@@ -10,7 +10,7 @@ const typeDefs = `
 
 	type Task {
 		id: String,
-		creator: user,
+		creator: Creator,
 		summary: Creator,
 		start: Time,
     end: Time
