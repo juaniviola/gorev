@@ -52,7 +52,9 @@ const resolvers = {
 				resolveWithFullResponse: true
 			})
 
-			const data = await listEvents()
+			const data = {}
+      data.task = await listEvents()
+      data.token = verify.headers['x-auth-token']
       return data
 		}
 	},

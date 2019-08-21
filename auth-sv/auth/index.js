@@ -28,7 +28,8 @@ router.post('/create', async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-  	isAdmin: user.isAdmin
+    created: Date.now(),
+    exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)
@@ -54,7 +55,8 @@ router.post('/login', async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-  	isAdmin: user.isAdmin
+    created: Date.now(),
+    exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)
@@ -67,7 +69,7 @@ router.post('/login', async (req, res) => {
 
 // /api/users/ -> username, (token)
 router.post('/', auth, async (req, res) => {
-	console.log(req.user)
+	// console.log(req.user)
   let user = await User.findById(req.user._id)
   if (!user) return res.status(400).send('User no exist')
 
@@ -75,7 +77,8 @@ router.post('/', auth, async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-  	isAdmin: user.isAdmin
+    created: Date.now(),
+    exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)

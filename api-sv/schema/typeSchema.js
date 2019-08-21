@@ -16,6 +16,11 @@ const typeDefs = `
     end: Time
 	}
 
+  type Tasks {
+    token: String,
+    task: [Task]
+  }
+
 	input userCreate {
 		username: String,
 		password: String
@@ -34,7 +39,7 @@ const typeDefs = `
 	type Query {
 		verifyUser(user: userVerify): User,
 		loginUser(user: userLogin): User,
-		getTasks(user: userVerify): [Task]
+		getTasks(user: userVerify): Tasks
 	}
 
 	type Mutation {
