@@ -28,8 +28,8 @@ router.post('/create', async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-    created: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + (60 * 60)
+    created: Date.now()
+    //exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)
@@ -55,8 +55,8 @@ router.post('/login', async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-    created: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + (60 * 60)
+    created: Date.now()
+    //exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)
@@ -77,8 +77,8 @@ router.post('/', auth, async (req, res) => {
   const params = {
   	_id: user._id,
   	username: user.username,
-    created: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + (60 * 60)
+    created: Date.now()
+    //exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
   const token = generateAuthToken(params)
